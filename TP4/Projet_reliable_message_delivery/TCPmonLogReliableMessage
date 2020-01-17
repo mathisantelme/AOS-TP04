@@ -1,0 +1,80 @@
+
+==============
+Listen Port: 1111
+Target Host: 127.0.0.1
+Target Port: 8080
+==== Request ====
+GET /ReliableMessageDelivery/ReliableMessageDeliveryWS?wsdl HTTP/1.1
+User-Agent: Java/1.8.0_144
+Host: 127.0.0.1:1111
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+==== Response ====
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/xml;charset=UTF-8
+Content-Length: 2621
+Date: Thu, 16 Jan 2020 19:55:40 GMT
+
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://exercice/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ReliableMessageDeliveryWS" targetNamespace="http://exercice/">
+  <wsdl:message name="additionner">
+    <wsdl:part name="x" type="xsd:int">
+    </wsdl:part>
+    <wsdl:part name="y" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="helloResponse">
+    <wsdl:part name="return" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="hello">
+    <wsdl:part name="name" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="additionnerResponse">
+    <wsdl:part name="return" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ReliableMessageDeliveryWS">
+    <wsdl:operation name="hello">
+      <wsdl:input message="tns:hello" name="hello">
+    </wsdl:input>
+      <wsdl:output message="tns:helloResponse" name="helloResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="additionner">
+      <wsdl:input message="tns:additionner" name="additionner">
+    </wsdl:input>
+      <wsdl:output message="tns:additionnerResponse" name="additionnerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReliableMessageDeliveryWSSoapBinding" type="tns:ReliableMessageDeliveryWS">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="hello">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="hello">
+        <soap:body namespace="http://exercice/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="helloResponse">
+        <soap:body namespace="http://exercice/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="additionner">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="additionner">
+        <soap:body namespace="http://exercice/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="additionnerResponse">
+        <soap:body namespace="http://exercice/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReliableMessageDeliveryWS">
+    <wsdl:port binding="tns:ReliableMessageDeliveryWSSoapBinding" name="ReliableMessageDeliveryWSPort">
+      <soap:address location="http://localhost:8080/ReliableMessageDelivery/ReliableMessageDeliveryWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
+==============
